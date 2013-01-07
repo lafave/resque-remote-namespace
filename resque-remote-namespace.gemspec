@@ -3,7 +3,7 @@ require File.expand_path('../lib/resque-remote-namespace/version', __FILE__)
 
 Gem::Specification.new do |s|
   s.name        = 'resque-remote-namespace'
-  s.version     = Resque::Plugins::Remote::VERSION
+  s.version     = Resque::Plugins::RemoteNamespace::VERSION
   s.platform    = Gem::Platform::RUBY
   s.authors     = ['BJ Neilsen', 'Adam LaFave']
   s.email       = ['bj.neilsen@gmail.com', 'lafave.adam@gmail.com']

@@ -1,6 +1,6 @@
 module Resque
 	module Plugins
-		module Remote
+		module RemoteNamespace
 			
 			# Remote enqueue of a job by temporarily changing the Resque redis 
       #   namespace.
@@ -37,5 +37,5 @@ module Resque
 	end
 	
 	# Pull the remote methods into the Resque module
-	extend Plugins::Remote
+	extend Plugins::RemoteNamespace
 end

@@ -1,6 +1,6 @@
 module Resque
 	module Plugins
-	  module Remote
+	  module RemoteNamespace
 	    VERSION = "0.1.0"
 	  end
 	end

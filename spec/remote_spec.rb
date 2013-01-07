@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Resque::Plugins::Remote do
+describe Resque::Plugins::RemoteNamespace do
 	let(:queue) 					 { :default }
 	let(:remote_namespace) { 'resque:bar' }
 	
@@ -12,7 +12,7 @@ describe Resque::Plugins::Remote do
 	
 	it 'passes resque lint' do
 		lambda {
-			Resque::Plugin.lint(Resque::Plugins::Remote)
+			Resque::Plugin.lint(Resque::Plugins::RemoteNamespace)
 		}.should_not raise_error
 	end
 	
