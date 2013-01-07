@@ -4,25 +4,13 @@
 
 **Note: You must have a version of Resque installed or added to your Gemfile for `resque-remote-namespace` to work. Resque Version 0.10.0 has been tested to work with the current release of `resque-remote-namespace`.**
 
-Install the gem ad-hoc:
-
-	$ gem install resque -v 0.10.0
-	$ gem install resque-remote-namespace
-
-Or, add it to your Bundler `Gemfile`:
+Add it to your Bundler `Gemfile`:
 
 	# Gemfile
 	gem 'resque', '0.10.0'
-	gem 'resque-remote-namespace'
+	gem 'resque-remote-namespace', :git => 'git://github.com/lafave/resque-remote-namespace.git'
 
 And then run a `bundle install`.
-
-Without Bundler, in your appropriate config location for your app:
-
-	require 'resque'
-	require 'resque-remote-namespace'
-
-If you're using bundler, just setup your gemset normally.
 
 # Usage
 
