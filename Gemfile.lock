@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    resque-remote-namespace (0.1.0)
+    resque-remote-namespace (0.2.0)
       resque (~> 1.0)
       resque-scheduler
 
