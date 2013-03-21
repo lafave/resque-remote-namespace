@@ -26,8 +26,10 @@ Gem::Specification.new do |s|
   s.rubyforge_project         = 'resque-remote-namespace'
 
   s.add_dependency 'resque', '~> 1.0'
+  s.add_dependency 'resque-scheduler'
 
   s.add_development_dependency 'bundler', '~> 1.0'
+  s.add_development_dependency 'debugger'
   s.add_development_dependency 'rspec', '~> 2.8'
 
   s.files        = `git ls-files`.split("\n")
