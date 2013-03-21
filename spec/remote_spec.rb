@@ -50,6 +50,32 @@ describe Resque::Plugins::RemoteNamespace do
     end
 	end
 
+  describe '#remote_enqueue_to_in' do
+    subject       { Resque.remote_enqueue_to_in 5, queue, remote_namespace, 'TestJob', 'foo' }
+
+    it 'temporarily changes the Resque.redis.namespace' do
+      Resque.redis.should_receive(:namespace=)
+        .with('resque:foo')
+        .once
+
+      Resque.redis.should_receive(:namespace=)
+        .with('resque:bar')
+        .once
+
+      subject
+    end
+
+    it 'enqueues a job' do
+      expect {
+        subject
+      }.to change {
+        from_namespace remote_namespace do
+          Resque.delayed_queue_schedule_size
+        end
+      }.by(1)
+    end
+  end
+
 	describe '#remote_dequeue_from' do
 		subject { Resque.remote_dequeue_from queue, remote_namespace, 'TestJob', 'foo' }
 
