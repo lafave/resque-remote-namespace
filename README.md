@@ -2,15 +2,12 @@
 
 # Installation
 
-**Note: You must have a version of Resque installed or added to your Gemfile for `resque-remote-namespace` to work. Resque Version 0.10.0 has been tested to work with the current release of `resque-remote-namespace`.**
-
 Add it to your Bundler `Gemfile`:
 
 	# Gemfile
-	gem 'resque', '0.10.0'
-	gem 'resque-remote-namespace', :git => 'git://github.com/lafave/resque-remote-namespace.git'
+	gem 'resque-remote-namespace'
 
-And then run a `bundle install`.
+And then run `bundle install`.
 
 # Usage
 
@@ -18,6 +15,9 @@ And then run a `bundle install`.
 ```ruby
 # Enqueues TestJob to the "default" queue on the "resque:foo" redis namespace with "foo" as its sole argument.
 Resque.remote_enqueue_to 'default', 'resque:foo', 'TestJob', 'foo'
+
+# Enqueues TestJob to the "default" queue on the "resque:foo" redis namespace in 5 minutes with "foo" as its sole argument. (Uses resque-scheduler gem)
+Resque.remote_enqueue_to_in 5.minutes, 'default', 'resque:foo', 'TestJob', 'foo'
 ```
 
 ## Dequeueing
@@ -34,7 +34,7 @@ To fix this, just create a stub of the job you are remote enqueueing. Ex:
 ```ruby
 # Stub of TestJob. Actual implementation is located in X.
 class TestJob
-  def self.perform(param1) end
+  def self.perform(*args) end
 end
 ```
 
@@ -44,7 +44,7 @@ Note that the actual implementation of the remote job does not need to have its 
 class TestJob
   # no queue needed
 
-  def self.perform(param1)
+  def self.perform(*args)
     ...
   end
 end
